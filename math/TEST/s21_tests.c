@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "s21_math.c"
-#include "s21_math.h"
+#include "../s21_math.c"
+#include "../s21_math.h"
 
 START_TEST(pow_test_1) {
   for (double k = -9; k <= 9; k += 1.7) {

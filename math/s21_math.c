@@ -9,7 +9,8 @@ double s21_sin(double x) {
   while (fabs(folding) > EPSILON) {
     nominator *= pow(x, 2);
     sign *= -1;
-    denominator = denominator * ++num * ++num;
+    denominator *= (++num);
+    denominator *= (++num);
     folding = sign * (nominator / denominator);
     sum += folding;
     // printf("%lf  fold = %lf\n", sum, fabs(folding));
@@ -24,14 +25,15 @@ double s21_cos(double x) {
   while (fabs(folding) > EPSILON) {
     nominator *= pow(x, 2);
     sign *= -1;
-    denominator = denominator * ++num * ++num;
+    denominator *= (++num);
+    denominator *= (++num);
     folding = sign * (nominator / denominator);
     sum += folding;
     // printf("%lf  fold = %lf\n", sum, fabs(folding));
   }
   return sum;
 }
-double s21_acos(double x) {}
+// double s21_acos(double x) {}
 double s21_asin(double x) {
   double sum = 0, folding = 10, denominator = 1, factorial = 1, koef = 3,
          num = 1, nominator = 1;
@@ -68,13 +70,11 @@ double s21_atan(double x) {
   return sum;
 }
 double s21_tan(double x) { return s21_sin(x) / s21_cos(x); }
-
 int s21_abs(int x) { return x < 0 ? x * -1 : x; }
 double s21_fabs(double x) { return x < 0 ? x * -1 : x; }
-
 double s21_floor(double x) {
   double res = 0;
-  double diff = fabs(round(x) - x);
+  // double diff = fabs(round(x) - x);
   if (round(x) < x)
     res = round(x);
   else {
@@ -87,7 +87,7 @@ double s21_floor(double x) {
 }
 double s21_ceil(double x) {
   double res = 0;
-  double diff = fabs(round(x) - x);
+  // double diff = fabs(round(x) - x);
   if (round(x) < x)
     res = round(x) + 1;
   else {
@@ -98,7 +98,6 @@ double s21_ceil(double x) {
   }
   return res;
 }
-
 long double s21_fmod(double x, double y) {
   double sum = x;
   while (fabs(sum) + y <= x) {
@@ -122,7 +121,6 @@ long double s21_log(double x) {
   }
   return sum;
 }
-
 long double s21_exp(double x) {
   double sum = 0, folding = 10, denominator = 1, num = 0, nominator = 1;
   // scanf("%lf", &x);
