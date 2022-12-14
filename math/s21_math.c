@@ -72,8 +72,32 @@ double s21_tan(double x) { return s21_sin(x) / s21_cos(x); }
 int s21_abs(int x) { return x < 0 ? x * -1 : x; }
 double s21_fabs(double x) { return x < 0 ? x * -1 : x; }
 
-long double s21_floor(double x) {}
-long double s21_ceil(double x) {}
+double s21_floor(double x) {
+  double res = 0;
+  double diff = fabs(round(x) - x);
+  if (round(x) < x)
+    res = round(x);
+  else {
+    if (round(x) != x)
+      res = round(x) - 1;
+    else
+      res = x;
+  }
+  return res;
+}
+double s21_ceil(double x) {
+  double res = 0;
+  double diff = fabs(round(x) - x);
+  if (round(x) < x)
+    res = round(x) + 1;
+  else {
+    if (round(x) != x)
+      res = round(x);
+    else
+      res = x;
+  }
+  return res;
+}
 
 long double s21_fmod(double x, double y) {
   double sum = x;
