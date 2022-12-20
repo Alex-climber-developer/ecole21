@@ -59,12 +59,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+enum STATUS { OK, INF_r, INF_l, NAN, DOP_CODE };
 typedef struct {
-  int bits[4];
+  unsigned int bits[4];
+  enum STATUS;
 } s21_decimal;
 
-//* | Преобразователи |
+//* | Преобразователи |                 //TODO: IN THE END - EVERYONE
 int s21_from_int_to_decimal(int src, s21_decimal *dst);      //| Из int |
 int s21_from_float_to_decimal(float src, s21_decimal *dst);  // | Из float  |
 int s21_from_decimal_to_int(s21_decimal src, int *dst);      // | В int  |
@@ -72,8 +73,7 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst);  // | В float  |
 //  - 0 - OK
 //  - 1 - ошибка конвертации
 
-//* | Операторы сравнение |
-
+//* | Операторы сравнение |                 //TODO: RUSLAN
 int s21_is_less(s21_decimal, s21_decimal);  // | Меньше  | < |
 int s21_is_less_or_equal(s21_decimal,
                          s21_decimal);  // | Меньше или равно | <= |
@@ -85,6 +85,7 @@ int s21_is_not_equal(s21_decimal, s21_decimal);  // | Не равно | != |
 //  - 0 - FALSE
 //  - 1 - TRUE
 
+//* | Преобразователи |                 //TODO: MARK
 int s21_floor(s21_decimal value,
               s21_decimal *result);  // | Округляет указанное Decimal число до
                                      // ближайшего целого числа в сторону
@@ -103,7 +104,7 @@ int s21_negate(s21_decimal value,
 //  - 0 - OK
 //  - 1 - ошибка вычисления
 
-//* | Арифметические операторы |
+//* | Арифметические операторы |                 //TODO: SANYA
 int s21_add(s21_decimal value_1, s21_decimal value_2,
             s21_decimal *result);  //| Сложение | + |
 int s21_sub(s21_decimal value_1, s21_decimal value_2,
@@ -118,5 +119,6 @@ int s21_mod(s21_decimal value_1, s21_decimal value_2,
 // - 1 - число слишком велико или равно бесконечности
 // - 2 - число слишком мало или равно отрицательной бесконечности
 // - 3 - деление на 0
-
+char *str_mul(char *a, char *b);
+char *str_add(char *a, char *b, char *result);
 #endif  // SRC_S21_DECIMAL_H
