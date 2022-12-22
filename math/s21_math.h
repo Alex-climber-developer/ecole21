@@ -1,8 +1,8 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 #define EPSILON 10e-6
+
 double s21_acos(double x);
 double s21_asin(double x);
 double s21_atan(double x);

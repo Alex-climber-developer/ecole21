@@ -1,6 +1,6 @@
 COMPILER=gcc
 OPTIONS=-Wall -Wextra -Werror
-COMPILE=$(COMPILER)
+COMPILE=$(COMPILER) $(OPTIONS)
 TEST_FLAGS = -lcheck
 GCOV_FLAGS  = --coverage -lcheck
 UNAME = $(shell uname)
@@ -10,8 +10,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 all: s21_math.a test
-
-s21_math.a: s21_math.o
+s21_math.a:
 	$(COMPILE) -c s21_math.c
 	@ar rc s21_math.a s21_math.o
 	@ranlib s21_math.a
@@ -23,12 +22,10 @@ check:
 	clang-format -style=Google -i *.c
 	clang-format -style=Google -n *.c
 
-clean:
-	# rm -rf *.o *.gcno *.gcda *.a *.info gcov report ../test
-	rm -rf *.o
+# clean: rm -rf *.o *.gcno *.gcda *.a *.info gcov report Tests/test
 
-test: s21_math.o
-	@$(COMPILE) Test/s21_unit_peer_1.c s21_math.c -o Test/test $(TEST_FLAGS)
-	@./Test/test
+test:
+	@$(COMPILE) Tests/s21_unit_peer_1.c s21_math.c $(TEST_FLAGS) -o Tests/test
+	@./Tests/test
 
-gcov_report:
+# gcov_report:

@@ -1,0 +1,30 @@
+# FLAGS=-c -Wall -Werror -Wextra
+# .PHONY: test all clean
+# all: s21_math.a
+
+# # s21_math: s21_math.o
+# # 	gcc s21_math.o -o s21_math
+
+# s21_math.a: clean
+# 	gcc -c s21_math.c
+# # gcc $(FLAGS) s21_math.c
+# 	ar rc lib_s21_math.a s21_math.o
+# 	ranlib lib_s21_math.a
+# 	rm -f *.o
+
+# clean:
+# 	rm -rf *.o
+# 	rm -rf s21_math
+
+# re:
+# 	Make clean
+# 	Make
+
+# test:
+# 	gcc TEST/s21_unit_peer_1.c s21_math.c  -o TEST/test
+# 	./TEST/test
+# check:
+# 	cppcheck *.c *.h
+# 	cp ../../materials/linters/.clang-format ./
+# 	clang-format -n *.c *.h
+# 	rm -rf .clang-format
