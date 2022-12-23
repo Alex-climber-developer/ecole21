@@ -22,3 +22,6 @@ long double s21_log(double x);
 long double s21_exp(double x);
 long double s21_sqrt(double x);
 long double s21_pow(double base, double exp);
+
+double s21_round_pi2(double x);
+double s21_round_pi(double x);
