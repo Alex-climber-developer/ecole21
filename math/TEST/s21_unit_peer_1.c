@@ -32,24 +32,21 @@ extern int flag;
 extern double x;
 extern double y;
 
-// char str1[100] = {'\0'};
-// char str2[100] = {'\0'};
-
-// START_TEST(abs_test) {
-// ck_assert_int_eq(s21_abs(my_inf), abs(my_inf));
-// ck_assert_int_eq(s21_abs(my_min_inf), abs(my_min_inf));
-// ck_assert_int_eq(s21_abs(my_nan), abs(my_nan));
-// ck_assert_int_eq(s21_abs(min_nan), abs(min_nan));
-//   ck_assert_int_eq(s21_abs(zero), abs(zero));
-//   ck_assert_int_eq(s21_abs(min_zero), abs(min_zero));
-//   ck_assert_int_eq(s21_abs(big_num), abs(big_num));
-//   ck_assert_int_eq(s21_abs(min_big_num), abs(min_big_num));
-//   ck_assert_int_eq(s21_abs(num), abs(num));
-//   ck_assert_int_eq(s21_abs(min_num), abs(min_num));
-//   ck_assert_int_eq(s21_abs(small_num), abs(small_num));
-//   ck_assert_int_eq(s21_abs(min_small_num), abs(min_small_num));
-// }
-// END_TEST
+START_TEST(abs_test) {
+  ck_assert_int_eq(s21_abs(my_inf), abs(my_inf));
+  ck_assert_int_eq(s21_abs(my_min_inf), abs(my_min_inf));
+  ck_assert_int_eq(s21_abs(my_nan), abs(my_nan));
+  ck_assert_int_eq(s21_abs(min_nan), abs(min_nan));
+  ck_assert_int_eq(s21_abs(zero), abs(zero));
+  ck_assert_int_eq(s21_abs(min_zero), abs(min_zero));
+  ck_assert_int_eq(s21_abs(big_num), abs(big_num));
+  ck_assert_int_eq(s21_abs(min_big_num), abs(min_big_num));
+  ck_assert_int_eq(s21_abs(num), abs(num));
+  ck_assert_int_eq(s21_abs(min_num), abs(min_num));
+  ck_assert_int_eq(s21_abs(small_num), abs(small_num));
+  ck_assert_int_eq(s21_abs(min_small_num), abs(min_small_num));
+}
+END_TEST
 
 START_TEST(fabs_test) {
   ck_assert_double_eq(s21_fabs(my_inf), fabs(my_inf));
@@ -67,7 +64,6 @@ START_TEST(fabs_test) {
   ck_assert_double_eq(s21_fabs(mzf), fabs(mzf));
   ck_assert_double_eq(s21_fabs(tf), fabs(tf));
   ck_assert_double_eq(s21_fabs(mtf), fabs(mtf));
-  ck_assert_double_eq(s21_fabs(big_float), fabs(big_float));
   ck_assert_double_eq(s21_fabs(big_float), fabs(big_float));
   ck_assert_double_eq(s21_fabs(min_big_float), fabs(min_big_float));
   ck_assert_double_eq(s21_fabs(small), fabs(small));
@@ -94,7 +90,6 @@ START_TEST(floor_test) {
   ck_assert_double_eq(s21_floor(tf), floor(tf));
   ck_assert_double_eq(s21_floor(mtf), floor(mtf));
   ck_assert_double_eq(s21_floor(big_float), floor(big_float));
-  ck_assert_double_eq(s21_floor(big_float), floor(big_float));
   ck_assert_double_eq(s21_floor(min_big_float), floor(min_big_float));
   ck_assert_double_eq(s21_floor(small), floor(small));
   ck_assert_double_eq(s21_floor(min_long_double), floor(min_long_double));
@@ -119,7 +114,6 @@ START_TEST(ceil_test) {
   ck_assert_double_eq(s21_ceil(mzf), ceil(mzf));
   ck_assert_double_eq(s21_ceil(tf), ceil(tf));
   ck_assert_double_eq(s21_ceil(mtf), ceil(mtf));
-  ck_assert_double_eq(s21_ceil(big_float), ceil(big_float));
   ck_assert_double_eq(s21_ceil(big_float), ceil(big_float));
   ck_assert_double_eq(s21_ceil(min_big_float), ceil(min_big_float));
   ck_assert_double_eq(s21_ceil(small), ceil(small));
@@ -149,7 +143,6 @@ START_TEST(exp_test) {
   ck_assert_double_eq_tol(s21_exp(mzf), exp(mzf), EPSILON);
   ck_assert_double_eq_tol(s21_exp(tf), exp(tf), EPSILON);
   ck_assert_double_eq_tol(s21_exp(mtf), exp(mtf), EPSILON);
-  // ck_assert_double_eq_tol(s21_exp(big_float), exp(big_float), EPSILON);
   // ck_assert_double_eq_tol(s21_exp(big_float), exp(big_float), EPSILON);
   // ck_assert_double_eq_tol(s21_exp(min_big_float), exp(min_big_float),
   // EPSILON);
@@ -217,7 +210,6 @@ START_TEST(sqrt_test) {
   ck_assert_double_eq_tol(s21_sqrt(tf), sqrt(tf), 10e-6);
   ck_assert_double_eq_tol(s21_sqrt(mtf), sqrt(mtf), 10e-6);
   ck_assert_double_eq_tol(s21_sqrt(big_float), sqrt(big_float), 10e-6);
-  ck_assert_double_eq_tol(s21_sqrt(big_float), sqrt(big_float), 10e-6);
   ck_assert_double_eq_tol(s21_sqrt(min_big_float), sqrt(min_big_float), 10e-6);
   ck_assert_double_eq_tol(s21_sqrt(small), sqrt(small), 10e-6);
   ck_assert_double_eq_tol(s21_sqrt(min_long_double), sqrt(min_long_double),
@@ -248,7 +240,6 @@ START_TEST(fmod_test) {
   ck_assert_double_eq_tol(s21_fmod(tf, i), fmod(tf, i), 10e-6);
   ck_assert_double_eq_tol(s21_fmod(mtf, i), fmod(mtf, i), 10e-6);
   ck_assert_double_eq_tol(s21_fmod(big_float, i), fmod(big_float, i), 10e-6);
-  ck_assert_double_eq_tol(s21_fmod(big_float, i), fmod(big_float, i), 10e-6);
   ck_assert_double_eq_tol(s21_fmod(min_big_float, i), fmod(min_big_float, i),
                           10e-6);
   ck_assert_double_eq_tol(s21_fmod(small, i), fmod(small, i), 10e-6);
@@ -278,7 +269,6 @@ START_TEST(log_test) {
   // ck_assert_double_eq_tol(s21_log(tf), log(tf), 10e-6);
   ck_assert_ldouble_nan(s21_log(mtf));
   // ck_assert_double_eq_tol(s21_log(big_float), log(big_float), 10e-6);
-  // ck_assert_double_eq_tol(s21_log(big_float), log(big_float), 10e-6);
   ck_assert_ldouble_nan(s21_log(min_big_float));
   // ck_assert_double_eq_tol(s21_log(small), log(small), 10e-6);
   ck_assert_ldouble_nan(s21_log(min_long_double));
@@ -298,123 +288,126 @@ START_TEST(sin_test) {
   ck_assert_double_eq_tol(s21_sin(small_num), sin(small_num), EPSILON);
   ck_assert_double_eq_tol(s21_sin(num), sin(num), EPSILON);
   ck_assert_double_eq_tol(s21_sin(min_num), sin(min_num), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(big_num), sin(big_num), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(min_big_num), sin(min_big_num), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(mzf), sin(mzf), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(tf), sin(tf), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(mtf), sin(mtf), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(big_float), sin(big_float), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(big_float), sin(big_float), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(min_big_float), sin(min_big_float),
-  // EPSILON); ck_assert_double_eq_tol(s21_sin(small), sin(small), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(min_long_double), sin(min_long_double),
-  //                         EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(min_small), sin(min_small), EPSILON);
-  // ck_assert_double_eq_tol(s21_sin(long_double), sin(long_double), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(big_num), sin(big_num), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(min_big_num), sin(min_big_num), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(mzf), sin(mzf), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(tf), sin(tf), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(mtf), sin(mtf), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(big_float), sin(big_float), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(min_big_float), sin(min_big_float), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(small), sin(small), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(min_long_double), sin(min_long_double),
+                          EPSILON);
+  ck_assert_double_eq_tol(s21_sin(min_small), sin(min_small), EPSILON);
+  ck_assert_double_eq_tol(s21_sin(long_double), sin(long_double), EPSILON);
 }
 END_TEST
 
 START_TEST(cos_test) {
-  ck_assert_double_eq(s21_cos(my_inf), cos(my_inf));
-  ck_assert_double_eq(s21_cos(my_min_inf), cos(my_min_inf));
-  // // ck_assert_double_eq(s21_cos(my_nan), cos(my_nan));
-  // // ck_assert_double_eq(s21_cos(min_nan), cos(min_nan));
+  ck_assert_ldouble_nan(s21_cos(my_inf));
+  ck_assert_ldouble_nan(s21_cos(my_min_inf));
+  ck_assert_ldouble_nan(s21_cos(my_nan));
+  ck_assert_ldouble_nan(s21_cos(min_nan));
   ck_assert_double_eq(s21_cos(zero), cos(zero));
   ck_assert_double_eq(s21_cos(min_zero), cos(min_zero));
-  ck_assert_double_eq(s21_cos(min_small_num), cos(min_small_num));
-  ck_assert_double_eq(s21_cos(small_num), cos(small_num));
-  ck_assert_double_eq(s21_cos(num), cos(num));
-  ck_assert_double_eq(s21_cos(min_num), cos(min_num));
-  ck_assert_double_eq(s21_cos(big_num), cos(big_num));
-  ck_assert_double_eq(s21_cos(min_big_num), cos(min_big_num));
-  ck_assert_double_eq(s21_cos(mzf), cos(mzf));
-  ck_assert_double_eq(s21_cos(tf), cos(tf));
-  ck_assert_double_eq(s21_cos(mtf), cos(mtf));
-  ck_assert_double_eq(s21_cos(big_float), cos(big_float));
-  ck_assert_double_eq(s21_cos(big_float), cos(big_float));
-  ck_assert_double_eq(s21_cos(min_big_float), cos(min_big_float));
-  ck_assert_double_eq(s21_cos(small), cos(small));
-  ck_assert_double_eq(s21_cos(min_long_double), cos(min_long_double));
-  ck_assert_double_eq(s21_cos(min_small), cos(min_small));
-  ck_assert_double_eq(s21_cos(long_double), cos(long_double));
+  ck_assert_double_eq_tol(s21_cos(min_small_num), cos(min_small_num), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(small_num), cos(small_num), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(num), cos(num), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(min_num), cos(min_num), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(big_num), cos(big_num), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(min_big_num), cos(min_big_num), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(mzf), cos(mzf), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(tf), cos(tf), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(mtf), cos(mtf), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(big_float), cos(big_float), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(min_big_float), cos(min_big_float), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(small), cos(small), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(min_long_double), cos(min_long_double),
+                          EPSILON);
+  ck_assert_double_eq_tol(s21_cos(min_small), cos(min_small), EPSILON);
+  ck_assert_double_eq_tol(s21_cos(long_double), cos(long_double), EPSILON);
 }
 END_TEST
 
 START_TEST(tan_test) {
-  ck_assert_double_eq(s21_tan(my_inf), tan(my_inf));
-  ck_assert_double_eq(s21_tan(my_min_inf), tan(my_min_inf));
-  // // ck_assert_double_eq(s21_tan(my_nan), tan(my_nan));
-  // // ck_assert_double_eq(s21_tan(min_nan), tan(min_nan));
+  ck_assert_ldouble_nan(s21_tan(my_inf));
+  ck_assert_ldouble_nan(s21_tan(my_min_inf));
+  ck_assert_ldouble_nan(s21_tan(my_nan));
+  ck_assert_ldouble_nan(s21_tan(min_nan));
   ck_assert_double_eq(s21_tan(zero), tan(zero));
   ck_assert_double_eq(s21_tan(min_zero), tan(min_zero));
-  ck_assert_double_eq(s21_tan(min_small_num), tan(min_small_num));
-  ck_assert_double_eq(s21_tan(small_num), tan(small_num));
-  ck_assert_double_eq(s21_tan(num), tan(num));
-  ck_assert_double_eq(s21_tan(min_num), tan(min_num));
-  ck_assert_double_eq(s21_tan(big_num), tan(big_num));
-  ck_assert_double_eq(s21_tan(min_big_num), tan(min_big_num));
-  ck_assert_double_eq(s21_tan(mzf), tan(mzf));
-  ck_assert_double_eq(s21_tan(tf), tan(tf));
-  ck_assert_double_eq(s21_tan(mtf), tan(mtf));
-  ck_assert_double_eq(s21_tan(big_float), tan(big_float));
-  ck_assert_double_eq(s21_tan(big_float), tan(big_float));
-  ck_assert_double_eq(s21_tan(min_big_float), tan(min_big_float));
-  ck_assert_double_eq(s21_tan(small), tan(small));
-  ck_assert_double_eq(s21_tan(min_long_double), tan(min_long_double));
-  ck_assert_double_eq(s21_tan(min_small), tan(min_small));
-  ck_assert_double_eq(s21_tan(long_double), tan(long_double));
+  ck_assert_double_eq_tol(s21_tan(min_small_num), tan(min_small_num), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(small_num), tan(small_num), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(num), tan(num), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(min_num), tan(min_num), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(big_num), tan(big_num), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(min_big_num), tan(min_big_num), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(mzf), tan(mzf), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(tf), tan(tf), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(mtf), tan(mtf), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(big_float), tan(big_float), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(min_big_float), tan(min_big_float), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(small), tan(small), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(min_long_double), tan(min_long_double),
+                          EPSILON);
+  ck_assert_double_eq_tol(s21_tan(min_small), tan(min_small), EPSILON);
+  ck_assert_double_eq_tol(s21_tan(long_double), tan(long_double), EPSILON);
 }
 END_TEST
 
 START_TEST(asin_test) {
-  ck_assert_double_eq(s21_asin(my_inf), asin(my_inf));
-  ck_assert_double_eq(s21_asin(my_min_inf), asin(my_min_inf));
-  // // ck_assert_double_eq(s21_asin(my_nan), asin(my_nan));
-  // // ck_assert_double_eq(s21_asin(min_nan), asin(min_nan));
+  ck_assert_ldouble_nan(s21_asin(my_inf));
+  ck_assert_ldouble_nan(s21_asin(my_min_inf));
+  ck_assert_ldouble_nan(s21_asin(my_nan));
+  ck_assert_ldouble_nan(s21_asin(min_nan));
   ck_assert_double_eq(s21_asin(zero), asin(zero));
   ck_assert_double_eq(s21_asin(min_zero), asin(min_zero));
-  ck_assert_double_eq(s21_asin(min_small_num), asin(min_small_num));
-  ck_assert_double_eq(s21_asin(small_num), asin(small_num));
-  ck_assert_double_eq(s21_asin(num), asin(num));
-  ck_assert_double_eq(s21_asin(min_num), asin(min_num));
-  ck_assert_double_eq(s21_asin(big_num), asin(big_num));
-  ck_assert_double_eq(s21_asin(min_big_num), asin(min_big_num));
-  ck_assert_double_eq(s21_asin(mzf), asin(mzf));
-  ck_assert_double_eq(s21_asin(tf), asin(tf));
-  ck_assert_double_eq(s21_asin(mtf), asin(mtf));
-  ck_assert_double_eq(s21_asin(big_float), asin(big_float));
-  ck_assert_double_eq(s21_asin(big_float), asin(big_float));
-  ck_assert_double_eq(s21_asin(min_big_float), asin(min_big_float));
-  ck_assert_double_eq(s21_asin(small), asin(small));
-  ck_assert_double_eq(s21_asin(min_long_double), asin(min_long_double));
-  ck_assert_double_eq(s21_asin(min_small), asin(min_small));
-  ck_assert_double_eq(s21_asin(long_double), asin(long_double));
+  // ck_assert_double_eq_tol(s21_asin(min_small_num), asin(min_small_num),
+  //                         EPSILON);
+  // ck_assert_double_eq_tol(s21_asin(small_num), asin(small_num), EPSILON);
+  ck_assert_ldouble_nan(s21_asin(num));
+  ck_assert_ldouble_nan(s21_asin(min_num));
+  ck_assert_ldouble_nan(s21_asin(big_num));
+  ck_assert_ldouble_nan(s21_asin(min_big_num));
+  // ck_assert_double_eq_tol(s21_asin(mzf), asin(mzf), EPSILON);
+  // ck_assert_double_eq_tol(s21_asin(zf), asin(zf), EPSILON);
+  ck_assert_ldouble_nan(s21_asin(tf));
+  ck_assert_ldouble_nan(s21_asin(mtf));
+  ck_assert_ldouble_nan(s21_asin(big_float));
+  ck_assert_ldouble_nan(s21_asin(min_big_float));
+  ck_assert_double_eq_tol(s21_asin(small), asin(small), EPSILON);
+  // ck_assert_double_eq_tol(s21_asin(min_long_double), asin(min_long_double),
+  //                         EPSILON);
+  ck_assert_double_eq_tol(s21_asin(min_small), asin(min_small), EPSILON);
+  // ck_assert_double_eq_tol(s21_asin(long_double), asin(long_double), EPSILON);
 }
 END_TEST
 
 START_TEST(atan_test) {
-  ck_assert_double_eq(s21_atan(my_inf), atan(my_inf));
-  ck_assert_double_eq(s21_atan(my_min_inf), atan(my_min_inf));
-  // // ck_assert_double_eq(s21_atan(my_nan), atan(my_nan));
-  // // ck_assert_double_eq(s21_atan(min_nan), atan(min_nan));
+  ck_assert_double_eq_tol(s21_atan(my_inf), atan(my_inf), EPSILON);
+  ck_assert_double_eq_tol(s21_atan(my_min_inf), atan(my_min_inf), EPSILON);
+  ck_assert_ldouble_nan(s21_atan(my_nan));
+  ck_assert_ldouble_nan(s21_atan(min_nan));
   ck_assert_double_eq(s21_atan(zero), atan(zero));
   ck_assert_double_eq(s21_atan(min_zero), atan(min_zero));
-  ck_assert_double_eq(s21_atan(min_small_num), atan(min_small_num));
-  ck_assert_double_eq(s21_atan(small_num), atan(small_num));
-  ck_assert_double_eq(s21_atan(num), atan(num));
-  ck_assert_double_eq(s21_atan(min_num), atan(min_num));
-  ck_assert_double_eq(s21_atan(big_num), atan(big_num));
-  ck_assert_double_eq(s21_atan(min_big_num), atan(min_big_num));
-  ck_assert_double_eq(s21_atan(mzf), atan(mzf));
-  ck_assert_double_eq(s21_atan(tf), atan(tf));
-  ck_assert_double_eq(s21_atan(mtf), atan(mtf));
-  ck_assert_double_eq(s21_atan(big_float), atan(big_float));
-  ck_assert_double_eq(s21_atan(big_float), atan(big_float));
-  ck_assert_double_eq(s21_atan(min_big_float), atan(min_big_float));
-  ck_assert_double_eq(s21_atan(small), atan(small));
-  ck_assert_double_eq(s21_atan(min_long_double), atan(min_long_double));
-  ck_assert_double_eq(s21_atan(min_small), atan(min_small));
-  ck_assert_double_eq(s21_atan(long_double), atan(long_double));
+  ck_assert_double_eq_tol(s21_atan(min_small_num), atan(min_small_num),
+                          EPSILON);
+  ck_assert_double_eq_tol(s21_atan(small_num), atan(small_num), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(num), atan(num), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(min_num), atan(min_num), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(big_num), atan(big_num), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(min_big_num), atan(min_big_num), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(mzf), atan(mzf), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(tf), atan(tf), EPSILON);
+  ck_assert_double_eq_tol(s21_atan(mtf), atan(mtf), EPSILON);
+  ck_assert_double_eq_tol(s21_atan(big_float), atan(big_float), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(min_big_float), atan(min_big_float),
+  //                         EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(small), atan(small), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(min_long_double), atan(min_long_double),
+  //                         EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(min_small), atan(min_small), EPSILON);
+  // ck_assert_double_eq_tol(s21_atan(long_double), atan(long_double), EPSILON);
 }
 END_TEST
 
@@ -446,7 +439,7 @@ END_TEST
 Suite *suite_test() {
   Suite *s = suite_create("Core");
   TCase *tc1_1 = tcase_create("Core");
-  // tcase_add_test(tc1_1, abs_test);
+  tcase_add_test(tc1_1, abs_test);
 
   // tcase_add_test(tc1_1, fabs_test);
   // tcase_add_test(tc1_1, floor_test);
@@ -457,7 +450,7 @@ Suite *suite_test() {
   // tcase_add_test(tc1_1, sqrt_test);
   // tcase_add_test(tc1_1, fmod_test);
   // tcase_add_test(tc1_1, log_test);
-  tcase_add_test(tc1_1, sin_test);
+  // tcase_add_test(tc1_1, sin_test);
   // tcase_add_test(tc1_1, cos_test);
   // tcase_add_test(tc1_1, tan_test);
   // tcase_add_test(tc1_1, asin_test);

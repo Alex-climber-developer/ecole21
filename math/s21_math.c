@@ -27,14 +27,22 @@ double x;
 double y;
 
 double s21_round_pi(double x) {
-  while (fabs(x) > s21_PI) x -= 2 * s21_PI;
+  if (x > 0)
+    while (fabs(x) > s21_PI) x = x - (2 * s21_PI);
+  else
+    while (fabs(x) > s21_PI) x = x + (2 * s21_PI);
+
   return x;
 }
 double s21_round_pi2(double x) {
-  while (fabs(x) > s21_PI / 2) x -= s21_PI;
+  if (x > 0)
+    while (fabs(x) > s21_PI / 2) x = x - (s21_PI);
+  else
+    while (fabs(x) > s21_PI / 2) x = x + (s21_PI);
   return x;
 }
-double s21_sin(double x) {
+
+double s21_sin(double x) {  //* GOOD
   double sum = 0, folding = 10, denominator = 1, num = 1, nominator = 1;
   int sign = 1;
   if (x == my_nan || x == my_min_inf || x == my_inf || x == min_nan)
@@ -54,8 +62,8 @@ double s21_sin(double x) {
   }
   return sum;
 }
-double s21_cos(double x) {
-  double sum = 0, folding = 10, denominator = 1, num = 1, nominator = 1;
+double s21_cos(double x) {  //* GOOD
+  double sum = 0, folding = 10, denominator = 1, num = 0, nominator = 1;
   int sign = 1;
   if (x == my_nan || x == my_min_inf || x == my_inf || x == min_nan)
     sum = my_nan;
@@ -69,16 +77,15 @@ double s21_cos(double x) {
       denominator *= (++num);
       folding = sign * (nominator / denominator);
       sum += folding;
-      // printf("%lf  fold = %lf\n", sum, fabs(folding));
     }
   }
   return sum;
 }
 // double s21_acos(double x) {}
-double s21_asin(double x) {
+double s21_asin(
+    double x) {  //! считает верно но последние знаки не точны(не те)
   double sum = 0, folding = 10, denominator = 1, factorial = 1, koef = 3,
          num = 1, nominator = 1;
-  int sign = 1;
   if (x == my_nan || x == my_min_inf || x == my_inf || x == min_nan)
     sum = my_nan;
   else if (fabs(x) > 1) {
@@ -87,10 +94,9 @@ double s21_asin(double x) {
     sum += x;
     nominator = x;
     while (fabs(folding) > EPSILON) {
-      nominator *= pow(x, 2);
-      sign *= -1;
-      denominator *= 2 * factorial;
-      folding = sign * (nominator / (denominator * koef++));
+      nominator = nominator * pow(x, 2) * (koef - 2);
+      denominator = denominator * 2 * factorial;
+      folding = nominator / (denominator * koef++);
       koef++;
       factorial = factorial * ++num;
       sum += folding;
@@ -98,12 +104,15 @@ double s21_asin(double x) {
   }
   return sum;
 }
-double s21_atan(double x) {
+double s21_atan(double x) {  //! не верно
   double sum = 0, folding = 10, denominator = 1, nominator = 1;
   int sign = 1;
-  if (x == my_nan || x == min_nan) sum = my_nan;
-  // else if (x == my_min_inf || x == my_inf) {
-  // }
+  if (x == my_nan || x == min_nan)
+    sum = my_nan;
+  else if (x == my_min_inf)
+    sum = -1.570796;
+  else if (x == my_inf)
+    sum = 1.570796;
   else {
     sum += x;
     nominator = x;
@@ -118,7 +127,7 @@ double s21_atan(double x) {
 
   return sum;
 }
-double s21_tan(double x) {
+double s21_tan(double x) {  //* GOOD
   double sum = 0;
   if (x == my_nan || x == my_min_inf || x == my_inf || x == min_nan)
     sum = my_nan;
@@ -128,9 +137,13 @@ double s21_tan(double x) {
   }
   return sum;
 }
-int s21_abs(int x) { return x < 0 ? x * -1 : x; }
-double s21_fabs(double x) { return x < 0 ? x * -1 : x; }
-double s21_floor(double x) {
+int s21_abs(int x) {  //* GOOD
+  return x < 0 ? x * -1 : x;
+}
+double s21_fabs(double x) {  //* GOOD
+  return x < 0 ? x * -1 : x;
+}
+double s21_floor(double x) {  //* GOOD
   double res = 0;
   // double diff = fabs(round(x) - x);
   if (round(x) < x)
@@ -143,7 +156,7 @@ double s21_floor(double x) {
   }
   return res;
 }
-double s21_ceil(double x) {
+double s21_ceil(double x) {  //* GOOD
   double res = 0;
   // double diff = fabs(round(x) - x);
   if (round(x) < x)
@@ -291,17 +304,35 @@ long double s21_pow(double base, double exp) {  // TODO: try tests  - surprize
 //   //   //   printf("+: %f\n-: %f\n\n", fmod(min_num, i), s21_fmod(min_num,
 //   // i));
 //   // }
-//   // printf("+: %f\n", asin(0.5));
-//   // printf("-:%lf\n\n", s21_asin(0.5));
-//   // printf("+: %f\n", (s21_sin(my_inf)));
-//   // printf("+: %f\n", (s21_sin(my_min_inf)));
-//   // printf("+: %f\n", (s21_sin(my_nan)));
-//   // printf("+: %f\n", (s21_sin(min_nan)));
 
-//   printf("+: %f\n", (tan(my_inf)));
-//   printf("+: %f\n", (tan(my_min_inf)));
-//   printf("+: %f\n", (tan(my_nan)));
-//   printf("+: %f\n", (tan(min_nan)));
+//   // printf("+: %f\n", (atan(mzf)));
+//   // printf("-: %f\n\n", (s21_atan(mzf)));
+//   // printf("+: %f\n", (atan(zf)));
+//   // printf("-: %f\n\n", (s21_atan(zf)));
+//   // printf("+: %f\n", (atan(min_long_double)));
+//   // printf("-: %f\n\n", (s21_atan(min_long_double)));
+
+//   // printf("+: %f\n", (atan(long_double)));
+//   // printf("-: %f\n\n", (s21_atan(long_double)));
+
+//   // printf("+: %f\n", (asin(min_small_num))) ;
+//   // printf("-: %f\n\n", (s21_asin(min_small_num)));
+
+//   // printf("+: %f\n", (asin(small_num)));
+//   // printf("-: %f\n\n", (s21_asin(small_num)));
+//   // printf("-: %f\n", (s21_sin(100)));
+
+//   printf("+: %f\n", (atan(num)));
+//   printf("+: %f\n\n", (s21_atan(num)));
+
+//   printf("+: %f\n", (atan(min_num)));
+//   printf("+: %f\n\n", (s21_atan(min_num)));
+
+//   printf("+: %f\n", (atan(big_num)));
+//   printf("+: %f\n\n", (s21_atan(big_num)));
+
+//   // printf("+: %f\n", (atan(my_min_inf)));
+//   // printf("+: %f\n\n", (s21_atan(my_min_inf)));
 //   // double i = 3;
 //   // printf("+: %f\n-: %f\n", fmod(i, i - 2.1), s21_fmod(i, i - 2.1));
 //   // printf("+: %f\n-: %f\n", fmod(3, 5.1), s21_fmod(3, 5.1));
